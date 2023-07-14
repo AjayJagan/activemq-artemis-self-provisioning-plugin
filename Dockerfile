@@ -4,8 +4,8 @@ ADD . /usr/src/app
 WORKDIR /usr/src/app
 
 USER root
-
-RUN export NODE_OPTIONS=--max-old-space-size=8192 && npm install -g yarn && yarn install --network-timeout 1000000 && yarn build
+ENV NODE_OPTIONS=--max-old-space-size=8192
+RUN npm install -g yarn && yarn install --network-timeout 1000000 && yarn build
 
 FROM registry.access.redhat.com/ubi9/nginx-120
 
