@@ -105,8 +105,8 @@ jobs:
          echo ${{ steps.vars.outputs.sha_short }}
          echo ${{ steps.vars.outputs.date }}
       
-      # - name: Set up QEMU
-      #   uses: docker/setup-qemu-action@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
 
       # - name: Build the amd image
       #   run: |
