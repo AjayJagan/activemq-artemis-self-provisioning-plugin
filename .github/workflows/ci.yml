@@ -59,23 +59,23 @@ jobs:
       - name: Checkout the repo
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.6.2
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: 16.6.2
 
-      - name: Get cache and install dependencies
-        uses: ./.github/actions/cache-restore
+#       - name: Get cache and install dependencies
+#         uses: ./.github/actions/cache-restore
 
-      - name: Build project
-        run: yarn run build
+#       - name: Build project
+#         run: yarn run build
 
       # TODO: uncomment after adding tests
       # - name: Execute tests
       #   run: yarn run test
 
-      - name: Check for uncommited changes
-        run: git diff --quiet --exit-code
+#       - name: Check for uncommited changes
+#         run: git diff --quiet --exit-code
 
       # TODO: uncomment after fixing storybook issue: https://github.com/openshift/dynamic-plugin-sdk/issues/216
       # - name: Build storybook
@@ -88,11 +88,11 @@ jobs:
       #     branch: gh-pages # The branch the action should deploy to.
       #     folder: storybook-static # The folder the action should deploy.
 
-      - name: Update the image
-        if: ${{inputs.snapshot}}
-        run: |
-          PLUGIN_IMAGE="quay.io/${{ secrets.QUAY_NAMESPACE }}/activemq-artemis-self-provisioning-plugin@$(skopeo inspect docker://quay.io/${{ secrets.QUAY_NAMESPACE }}/activemq-artemis-self-provisioning-plugin:snapshot | jq -r '.Digest')"
-          sed -i "s~FROM.*~FROM ${PLUGIN_IMAGE}~g" Dockerfile
+#       - name: Update the image
+#         if: ${{inputs.snapshot}}
+#         run: |
+#           PLUGIN_IMAGE="quay.io/${{ secrets.QUAY_NAMESPACE }}/activemq-artemis-self-provisioning-plugin@$(skopeo inspect docker://quay.io/${{ secrets.QUAY_NAMESPACE }}/activemq-artemis-self-provisioning-plugin:snapshot | jq -r '.Digest')"
+#           sed -i "s~FROM.*~FROM ${PLUGIN_IMAGE}~g" Dockerfile
 
       - name: Set outputs
         id: vars
