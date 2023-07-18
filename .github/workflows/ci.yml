@@ -146,4 +146,3 @@ jobs:
           tags: snapshot
           registry: quay.io/${{ secrets.QUAY_NAMESPACE }}
           username: ${{ secrets.QUAY_USERNAME }}
-          password: ${{ secrets.QUAY_PASSWORD }}
